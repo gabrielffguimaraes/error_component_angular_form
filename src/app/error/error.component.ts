@@ -1,5 +1,6 @@
 import {Component, Input, OnInit} from '@angular/core';
-import {FormGroup} from "@angular/forms";
+import {AbstractControl, FormGroup} from '@angular/forms';
+import {Validations} from '../validations';
 
 @Component({
   selector: 'app-error',
@@ -7,12 +8,26 @@ import {FormGroup} from "@angular/forms";
   styleUrls: ['./error.component.css']
 })
 export class ErrorComponent implements OnInit {
-  @Input('fm') fm: FormGroup;
-  @Input('name') name: string;
-  constructor() { }
+  @Input() fm: FormGroup;
+  @Input() label: string;
+  @Input() name: string;
+  control: AbstractControl;
+  msg = '';
+
+  constructor() {
+
+  }
 
   ngOnInit(): void {
-    console.log(this.fm.get(this.name).errors);
-    console.log("sdadada");
+    this.control = this.fm.get(this.label);
   }
+  get errorMessage(): any {
+    for (const key in this.control.errors) {
+      if (this.control.touched) {
+        return Validations.getError(this.control, this.label, key);
+      }
+    }
+    return null;
+  }
+
 }

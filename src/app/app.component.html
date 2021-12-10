@@ -1,15 +1,19 @@
-<form [formGroup]="fm">
-  <div class="mb-3">
-    <label for="exampleFormControlInput1" class="form-label">E-mail</label>
-    <input formControlName="email" type="email" class="form-control" id="exampleFormControlInput1" placeholder="name@example.com">
-    <app-error [fm]="fm" [name]="'email'"></app-error>
-  </div>
-  <div class="mb-3">
-    <label  class="form-label">Nome</label>
-    <textarea formControlName="nome"  class="form-control" rows="3"></textarea>
-  </div>
-  <div class="mb-3">
-    <label  class="form-label">Senha</label>
-    <input type="password" formControlName="senha" class="form-control" rows="3"/>
-  </div>
-</form>
+<div class="container">
+  <form  [formGroup]="fm">
+    <div class="mb-3">
+      <label for="exampleFormControlInput1" class="form-label">E-mail</label>
+      <input formControlName="email" type="email" class="form-control" id="exampleFormControlInput1" placeholder="name@example.com">
+      <app-error [fm]="fm" [name]="'email'" [label]="'email'"></app-error>
+    </div>
+    <div class="mb-3">
+      <label  class="form-label">Nome</label>
+      <textarea formControlName="nome"  class="form-control" rows="3"></textarea>
+    </div>
+    <div class="mb-3">
+      <label  class="form-label">Senha</label>
+      <input type="password" formControlName="senha" class="form-control" rows="3"/>
+    </div>
+  </form>
+  <br/>
+  <app-debugger [form]="fm"></app-debugger>
+</div>

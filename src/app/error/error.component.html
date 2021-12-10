@@ -1,6 +1,5 @@
-<div *ngIf="fm.get(name).hasError('required')">
-  email obrigatório **
+<div *ngIf="fm.get(label).errors">
+    {{errorMessage}}
 </div>
-<div *ngIf="fm.get(name).hasError('email')">
-  email inválido **
-</div>
+
+
